@@ -1,0 +1,258 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* BuxHat Dark Analytics Theme */
+  --background: #0F1117;
+  --foreground: #E8EAEF;
+  --card: #1A1F2E;
+  --card-foreground: #E8EAEF;
+  --popover: #1A1F2E;
+  --popover-foreground: #E8EAEF;
+  --primary: #00D9FF;
+  --primary-foreground: #0F1117;
+  --secondary: #7C3AED;
+  --secondary-foreground: #FFFFFF;
+  --muted: #404856;
+  --muted-foreground: #9CA3AF;
+  --accent: #00D9FF;
+  --accent-foreground: #0F1117;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(255, 255, 255, 0.05);
+  --input: #1A1F2E;
+  --ring: #00D9FF;
+  
+  /* BuxHat Signal Colors */
+  --signal-cyan: #00D9FF;
+  --signal-purple: #7C3AED;
+  --signal-blue: #3B82F6;
+  --signal-green: #10B981;
+  --signal-orange: #F97316;
+  
+  /* Charts */
+  --chart-1: #00D9FF;
+  --chart-2: #7C3AED;
+  --chart-3: #3B82F6;
+  --chart-4: #10B981;
+  --chart-5: #F97316;
+  
+  --radius: 0.75rem;
+  --sidebar: #0F1117;
+  --sidebar-foreground: #E8EAEF;
+  --sidebar-primary: #00D9FF;
+  --sidebar-primary-foreground: #0F1117;
+  --sidebar-accent: #7C3AED;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: rgba(255, 255, 255, 0.05);
+  --sidebar-ring: #00D9FF;
+}
+
+.dark {
+  --background: #0F1117;
+  --foreground: #E8EAEF;
+  --card: #1A1F2E;
+  --card-foreground: #E8EAEF;
+  --popover: #1A1F2E;
+  --popover-foreground: #E8EAEF;
+  --primary: #00D9FF;
+  --primary-foreground: #0F1117;
+  --secondary: #7C3AED;
+  --secondary-foreground: #FFFFFF;
+  --muted: #404856;
+  --muted-foreground: #9CA3AF;
+  --accent: #00D9FF;
+  --accent-foreground: #0F1117;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(255, 255, 255, 0.05);
+  --input: #1A1F2E;
+  --ring: #00D9FF;
+  
+  /* BuxHat Signal Colors */
+  --signal-cyan: #00D9FF;
+  --signal-purple: #7C3AED;
+  --signal-blue: #3B82F6;
+  --signal-green: #10B981;
+  --signal-orange: #F97316;
+  
+  /* Charts */
+  --chart-1: #00D9FF;
+  --chart-2: #7C3AED;
+  --chart-3: #3B82F6;
+  --chart-4: #10B981;
+  --chart-5: #F97316;
+  
+  --sidebar: #0F1117;
+  --sidebar-foreground: #E8EAEF;
+  --sidebar-primary: #00D9FF;
+  --sidebar-primary-foreground: #0F1117;
+  --sidebar-accent: #7C3AED;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: rgba(255, 255, 255, 0.05);
+  --sidebar-ring: #00D9FF;
+}
+
+@theme inline {
+  --font-sans: 'Geist', 'Geist Fallback';
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-signal-cyan: var(--signal-cyan);
+  --color-signal-purple: var(--signal-purple);
+  --color-signal-blue: var(--signal-blue);
+  --color-signal-green: var(--signal-green);
+  --color-signal-orange: var(--signal-orange);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Card glow effect */
+  .card-glow {
+    @apply rounded-lg bg-card border border-border transition-all duration-300;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  }
+  
+  .card-glow:hover {
+    box-shadow: 0 0 30px rgba(0, 217, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    @apply border-primary/20;
+  }
+  
+  /* Signal card base */
+  .signal-card {
+    @apply rounded-lg bg-card border border-border p-4 transition-all duration-300;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  }
+
+  .signal-card:hover {
+    box-shadow: 0 0 30px rgba(0, 217, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    @apply border-primary/20;
+  }
+  
+  /* Cyan signal (social mentions) */
+  .signal-cyan {
+    @apply border-l-4 border-l-signal-cyan;
+  }
+  
+  .signal-cyan:hover {
+    box-shadow: 0 0 30px rgba(0, 217, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Purple signal (sentiment) */
+  .signal-purple {
+    @apply border-l-4 border-l-signal-purple;
+  }
+  
+  .signal-purple:hover {
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Blue signal (streaming) */
+  .signal-blue {
+    @apply border-l-4 border-l-signal-blue;
+  }
+  
+  .signal-blue:hover {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Green signal (breakout) */
+  .signal-green {
+    @apply border-l-4 border-l-signal-green;
+  }
+  
+  .signal-green:hover {
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Orange signal (forecast) */
+  .signal-orange {
+    @apply border-l-4 border-l-signal-orange;
+  }
+  
+  .signal-orange:hover {
+    box-shadow: 0 0 30px rgba(249, 115, 22, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Chart animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(0, 217, 255, 0.05);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.1);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+  
+  /* Smooth hover state for interactive elements */
+  .interactive {
+    @apply cursor-pointer transition-all duration-200;
+  }
+  
+  .interactive:hover {
+    @apply scale-[1.02];
+  }
+}
