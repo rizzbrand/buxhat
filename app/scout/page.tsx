@@ -270,11 +270,19 @@ export default function ScoutPage() {
                   {filteredArtists.map((artist) => (
                     <div key={artist.id} className="p-4">
                       <div className="flex items-center justify-between gap-3">
-                        <div>
-                          <p className="font-semibold">{artist.name}</p>
-                          <p className="text-xs text-muted-foreground mt-0.5">
-                            {artist.country} • {artist.genre[0]}
-                          </p>
+                        <div className="flex items-center gap-3 min-w-0">
+                          <img
+                            src={artist.image}
+                            alt={artist.name}
+                            className="h-10 w-10 rounded-full object-cover border border-border bg-muted shrink-0"
+                            loading="lazy"
+                          />
+                          <div className="min-w-0">
+                            <p className="font-semibold truncate">{artist.name}</p>
+                            <p className="text-xs text-muted-foreground mt-0.5 truncate">
+                              {artist.country} • {artist.genre[0]}
+                            </p>
+                          </div>
                         </div>
                         <span
                           className={`shrink-0 inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold ${
@@ -344,7 +352,17 @@ export default function ScoutPage() {
                     <tbody>
                       {filteredArtists.map((artist) => (
                         <tr key={artist.id} className="border-b border-border hover:bg-muted/40 transition">
-                          <td className="px-4 py-3 font-semibold">{artist.name}</td>
+                          <td className="px-4 py-3">
+                            <div className="flex items-center gap-3 min-w-0">
+                              <img
+                                src={artist.image}
+                                alt={artist.name}
+                                className="h-9 w-9 rounded-full object-cover border border-border bg-muted shrink-0"
+                                loading="lazy"
+                              />
+                              <span className="font-semibold truncate">{artist.name}</span>
+                            </div>
+                          </td>
                           <td className="px-4 py-3 text-sm text-muted-foreground">
                             {artist.country}
                           </td>

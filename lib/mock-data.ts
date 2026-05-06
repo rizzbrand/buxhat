@@ -3,7 +3,7 @@ export const artists = [
   {
     id: "1",
     name: "Wizkid",
-    image: "/wizkid.jpeg",
+    image: "/Wizkid.jpeg",
     followers: 12500000,
     genre: ["Afrobeats", "Hip-hop"],
     country: "Nigeria",
@@ -71,7 +71,7 @@ export const artists = [
     image: "/mavo.jpeg",
     followers: 4500000,
     genre: ["Afrobeats"],
-    country: "South Africa",
+    country: "Nigeria",
     trending: true,
     trendingRank: 6,
     trendChange: 31,
