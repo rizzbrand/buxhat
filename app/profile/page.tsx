@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { User, Settings, LogOut, Bell, Globe } from 'lucide-react'
+import { Menu, User, Settings, LogOut, Bell, Globe, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Switch } from '@/components/ui/switch'
@@ -39,61 +39,89 @@ export default function ProfilePage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Desktop Sidebar Offset */}
-      <div className="lg:ml-64">
-        {/* Profile Header */}
-        <div className="border-b border-border bg-background">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-5">
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden flex-shrink-0 border border-border bg-muted shadow-sm">
-                  {profileImage ? (
-                    <img
-                      src={profileImage}
-                      alt="Profile"
-                      className="h-full w-full object-cover"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="h-full w-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                      <User className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-                    </div>
-                  )}
-                </div>
+      <div className="lg:ml-72">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-5">
+          {/* Mobile top bar (same vibe as Home/Scout/Explore) */}
+          <div className="lg:hidden sticky top-0 z-10 -mx-4 px-4 py-3 bg-background/85 backdrop-blur-md border-b border-border flex items-center gap-3">
+            <button
+              type="button"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-card/60"
+              aria-label="Open menu"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
 
-                <div>
-                  <h1 className="text-2xl sm:text-3xl font-bold leading-tight">Music Scout</h1>
-                  <p className="text-sm text-muted-foreground mt-1">scout@buxhat.com</p>
-                  <p className="text-xs text-muted-foreground mt-2">Last active: {userStats.lastActive}</p>
-                </div>
+            <div className="flex items-center gap-2 flex-1 justify-center">
+              <div className="w-9 h-9 bg-gradient-to-br from-signal-cyan via-signal-purple to-signal-blue rounded-xl flex items-center justify-center shadow-lg shadow-signal-purple/15">
+                <Zap className="w-5 h-5 text-primary-foreground" />
               </div>
-
-              <div className="sm:ml-auto flex gap-2 w-full sm:w-auto">
-                <Button variant="outline" size="sm" className="gap-2 flex-1 sm:flex-none">
-                  <Settings className="w-4 h-4" />
-                  Settings
-                </Button>
-                <Button variant="outline" size="sm" className="gap-2 flex-1 sm:flex-none">
-                  <LogOut className="w-4 h-4" />
-                  Logout
-                </Button>
-              </div>
+              <span className="text-sm font-bold tracking-wide">BUXHAT</span>
+              <span className="text-xs font-semibold px-2 py-1 rounded-full border border-border bg-card/60 text-muted-foreground">
+                BETA
+              </span>
             </div>
+
+            <Button variant="outline" size="sm" className="h-10 rounded-xl">
+              Log in
+            </Button>
           </div>
-        </div>
 
-        {/* Main Content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-          {/* Stats */}
-          <div>
-            <div className="flex items-end justify-between gap-4 mb-4">
-              <div>
-                <h2 className="text-2xl font-bold">Your Activity</h2>
-                <p className="text-sm text-muted-foreground mt-1">
-                  A quick overview of what you’ve been tracking.
-                </p>
+          {/* Panel */}
+          <Card className="bg-card/60 backdrop-blur border-border py-0 overflow-hidden">
+            {/* Profile header inside panel */}
+            <div className="p-5 border-b border-border">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden flex-shrink-0 border border-border bg-muted shadow-sm">
+                    {profileImage ? (
+                      <img
+                        src={profileImage}
+                        alt="Profile"
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="h-full w-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                        <User className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+                      </div>
+                    )}
+                  </div>
+
+                  <div>
+                    <h1 className="text-2xl sm:text-3xl font-bold leading-tight">Music Scout</h1>
+                    <p className="text-sm text-muted-foreground mt-1">scout@buxhat.com</p>
+                    <p className="text-xs text-muted-foreground mt-2">
+                      Last active: {userStats.lastActive}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="sm:ml-auto flex gap-2 w-full sm:w-auto">
+                  <Button variant="outline" size="sm" className="gap-2 flex-1 sm:flex-none">
+                    <Settings className="w-4 h-4" />
+                    Settings
+                  </Button>
+                  <Button variant="outline" size="sm" className="gap-2 flex-1 sm:flex-none">
+                    <LogOut className="w-4 h-4" />
+                    Logout
+                  </Button>
+                </div>
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+            {/* Main content inside panel */}
+            <div className="p-5 space-y-8">
+              {/* Stats */}
+              <div>
+                <div className="flex items-end justify-between gap-4 mb-4">
+                  <div>
+                    <h2 className="text-2xl font-bold">Your Activity</h2>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      A quick overview of what you’ve been tracking.
+                    </p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <MetricCard
                 title="Reports Generated"
                 value={userStats.reportsGenerated}
@@ -124,10 +152,10 @@ export default function ProfilePage() {
             </div>
           </div>
 
-          {/* Settings */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Notifications */}
-            <Card className="p-6 bg-card border-border">
+              {/* Settings */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Notifications */}
+                <Card className="p-6 bg-card border-border">
               <div className="flex items-center gap-3 mb-4">
                 <Bell className="w-5 h-5 text-primary" />
                 <h3 className="text-lg font-bold">Notifications</h3>
@@ -165,10 +193,10 @@ export default function ProfilePage() {
                   <Switch checked={trendingUpdates} onCheckedChange={setTrendingUpdates} />
                 </div>
               </div>
-            </Card>
+                </Card>
 
-            {/* Preferences */}
-            <Card className="p-6 bg-card border-border">
+                {/* Preferences */}
+                <Card className="p-6 bg-card border-border">
               <div className="flex items-center gap-3 mb-4">
                 <Globe className="w-5 h-5 text-primary" />
                 <h3 className="text-lg font-bold">Preferences</h3>
@@ -203,27 +231,47 @@ export default function ProfilePage() {
                   </div>
                 </div>
               </div>
-            </Card>
-          </div>
-
-          {/* Favorite Artists */}
-          <div>
-            <div className="flex items-end justify-between gap-4 mb-4">
-              <div>
-                <h2 className="text-2xl font-bold">Your Favorite Artists</h2>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Quick access to the artists you care about most.
-                </p>
+                </Card>
               </div>
-            </div>
-            {favoriteArtistsData.length > 0 ? (
-              <>
-                {/* Mobile: swipe rail */}
-                <div className="-mx-4 sm:mx-0 md:hidden">
-                  <div className="flex gap-4 overflow-x-auto px-4 sm:px-0 pb-2 snap-x snap-mandatory scroll-px-4 touch-pan-x overscroll-x-contain">
-                    {favoriteArtistsData.map((artist) => (
-                      <div key={artist.id} className="snap-start shrink-0 w-[280px]">
+
+              {/* Favorite Artists */}
+              <div>
+                <div className="flex items-end justify-between gap-4 mb-4">
+                  <div>
+                    <h2 className="text-2xl font-bold">Your Favorite Artists</h2>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      Quick access to the artists you care about most.
+                    </p>
+                  </div>
+                </div>
+                {favoriteArtistsData.length > 0 ? (
+                  <>
+                    {/* Mobile: swipe rail */}
+                    <div className="-mx-5 md:hidden">
+                      <div className="flex gap-4 overflow-x-auto px-5 pb-2 snap-x snap-mandatory scroll-px-5 touch-pan-x overscroll-x-contain">
+                        {favoriteArtistsData.map((artist) => (
+                          <div key={artist.id} className="snap-start shrink-0 w-[280px]">
+                            <SignalCard
+                              href={`/artist/${artist.id}`}
+                              artist={artist.name}
+                              image={artist.image}
+                              genre={artist.genre[0]}
+                              rank={artist.trendingRank}
+                              change={artist.trendChange}
+                              streams={artist.monthlyStreams}
+                              followers={artist.followers}
+                              breakoutPotential={artist.breakoutPotential}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Desktop/tablet: grid */}
+                    <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-4">
+                      {favoriteArtistsData.map((artist) => (
                         <SignalCard
+                          key={artist.id}
                           href={`/artist/${artist.id}`}
                           artist={artist.name}
                           image={artist.image}
@@ -234,53 +282,53 @@ export default function ProfilePage() {
                           followers={artist.followers}
                           breakoutPotential={artist.breakoutPotential}
                         />
-                      </div>
-                    ))}
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <div className="rounded-2xl border border-border bg-background/30 p-6 text-center">
+                    <p className="text-muted-foreground">No favorite artists yet</p>
+                  </div>
+                )}
+              </div>
+
+              {/* Recently Viewed */}
+              <div>
+                <div className="flex items-end justify-between gap-4 mb-4">
+                  <div>
+                    <h2 className="text-2xl font-bold">Recently Viewed</h2>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      Pick up where you left off.
+                    </p>
                   </div>
                 </div>
+                <>
+                  {/* Mobile: swipe rail */}
+                  <div className="-mx-5 md:hidden">
+                    <div className="flex gap-4 overflow-x-auto px-5 pb-2 snap-x snap-mandatory scroll-px-5 touch-pan-x overscroll-x-contain">
+                      {artists.slice(0, 4).map((artist) => (
+                        <div key={artist.id} className="snap-start shrink-0 w-[280px]">
+                          <SignalCard
+                            href={`/artist/${artist.id}`}
+                            artist={artist.name}
+                            image={artist.image}
+                            genre={artist.genre[0]}
+                            rank={artist.trendingRank}
+                            change={artist.trendChange}
+                            streams={artist.monthlyStreams}
+                            followers={artist.followers}
+                            breakoutPotential={artist.breakoutPotential}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
-                {/* Desktop/tablet: grid */}
-                <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-4">
-                  {favoriteArtistsData.map((artist) => (
-                    <SignalCard
-                      key={artist.id}
-                      href={`/artist/${artist.id}`}
-                      artist={artist.name}
-                      image={artist.image}
-                      genre={artist.genre[0]}
-                      rank={artist.trendingRank}
-                      change={artist.trendChange}
-                      streams={artist.monthlyStreams}
-                      followers={artist.followers}
-                      breakoutPotential={artist.breakoutPotential}
-                    />
-                  ))}
-                </div>
-              </>
-            ) : (
-              <Card className="p-8 bg-card border-border text-center">
-                <p className="text-muted-foreground">No favorite artists yet</p>
-              </Card>
-            )}
-          </div>
-
-          {/* Recently Viewed */}
-          <div>
-            <div className="flex items-end justify-between gap-4 mb-4">
-              <div>
-                <h2 className="text-2xl font-bold">Recently Viewed</h2>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Pick up where you left off.
-                </p>
-              </div>
-            </div>
-            <>
-              {/* Mobile: swipe rail */}
-              <div className="-mx-4 sm:mx-0 md:hidden">
-                <div className="flex gap-4 overflow-x-auto px-4 sm:px-0 pb-2 snap-x snap-mandatory scroll-px-4 touch-pan-x overscroll-x-contain">
-                  {artists.slice(0, 4).map((artist) => (
-                    <div key={artist.id} className="snap-start shrink-0 w-[280px]">
+                  {/* Desktop/tablet: grid */}
+                  <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-4">
+                    {artists.slice(0, 4).map((artist) => (
                       <SignalCard
+                        key={artist.id}
                         href={`/artist/${artist.id}`}
                         artist={artist.name}
                         image={artist.image}
@@ -291,30 +339,12 @@ export default function ProfilePage() {
                         followers={artist.followers}
                         breakoutPotential={artist.breakoutPotential}
                       />
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                </>
               </div>
-
-              {/* Desktop/tablet: grid */}
-              <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-4">
-                {artists.slice(0, 4).map((artist) => (
-                  <SignalCard
-                    key={artist.id}
-                    href={`/artist/${artist.id}`}
-                    artist={artist.name}
-                    image={artist.image}
-                    genre={artist.genre[0]}
-                    rank={artist.trendingRank}
-                    change={artist.trendChange}
-                    streams={artist.monthlyStreams}
-                    followers={artist.followers}
-                    breakoutPotential={artist.breakoutPotential}
-                  />
-                ))}
-              </div>
-            </>
-          </div>
+            </div>
+          </Card>
         </div>
       </div>
     </div>

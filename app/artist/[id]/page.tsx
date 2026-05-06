@@ -2,25 +2,28 @@
 
 import { useState } from 'react'
 import { useParams } from 'next/navigation'
-import { Heart, Share2, Music, Zap, TrendingUp, Users } from 'lucide-react'
+import Link from 'next/link'
+import { Heart, Share2, Music, Zap, TrendingUp, Users, BarChart3, Plus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { MetricCard } from '@/components/buxhat/MetricCard'
 import { TrendChart } from '@/components/buxhat/TrendChart'
 import { SignalCard } from '@/components/buxhat/SignalCard'
-import { trendData, artists, chartDataComparison } from '@/lib/mock-data'
+import { trendData, artists, artistAnalyticsById } from '@/lib/mock-data'
 
 export default function ArtistDetailPage() {
   const params = useParams()
   const artistId = params.id as string
   const artist = artists.find((a) => a.id === artistId) || artists[0]
   const [isFavorite, setIsFavorite] = useState(false)
+  const [isWatchlisted, setIsWatchlisted] = useState(false)
 
   const relatedArtists = artists.filter((a) => a.id !== artist.id).slice(0, 4)
+  const analytics = artistAnalyticsById[artist.id] || artistAnalyticsById['1']
 
   return (
     <div className="min-h-screen bg-background">
       {/* Desktop Sidebar Offset */}
-      <div className="lg:ml-64">
+      <div className="lg:ml-72">
         {/* Banner */}
         <div className="relative h-64 sm:h-80 lg:h-96 overflow-hidden bg-gradient-to-b from-primary/20 to-background">
           <img
@@ -47,6 +50,21 @@ export default function ArtistDetailPage() {
               </h1>
               <p className="text-lg text-muted-foreground mb-4">{artist.country}</p>
               <div className="flex gap-3 flex-wrap">
+                <Link href={`/scout?a=${artist.id}&b=${relatedArtists[0]?.id || artists[1]?.id || '2'}`}>
+                  <Button variant="outline" size="sm" className="gap-2">
+                    <BarChart3 className="w-4 h-4" />
+                    Compare Artist
+                  </Button>
+                </Link>
+                <Button
+                  variant={isWatchlisted ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => setIsWatchlisted(!isWatchlisted)}
+                  className="gap-2"
+                >
+                  <Plus className="w-4 h-4" />
+                  {isWatchlisted ? 'Watchlisted' : 'Add to Watchlist'}
+                </Button>
                 <Button
                   variant={isFavorite ? 'default' : 'outline'}
                   size="sm"
@@ -86,16 +104,63 @@ export default function ArtistDetailPage() {
                 variant="cyan"
               />
               <MetricCard
-                title="Breakout Potential"
-                value={`${artist.breakoutPotential}%`}
+                title="Trend Score"
+                value={`${analytics.trendScore}%`}
                 change={5}
                 icon={<Zap className="w-5 h-5" />}
+                variant="purple"
               />
               <MetricCard
-                title="Social Sentiment"
-                value="92%"
+                title="Breakout Probability"
+                value={`${analytics.breakoutProbability}%`}
                 change={3}
                 icon={<TrendingUp className="w-5 h-5" />}
+                variant="orange"
+              />
+            </div>
+          </div>
+
+          {/* Signal breakdown */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2 card-glow p-6">
+              <h2 className="text-2xl font-bold mb-1">Signal breakdown</h2>
+              <p className="text-sm text-muted-foreground mb-5">
+                A quick view of what’s driving the trend and breakout score.
+              </p>
+
+              <div className="space-y-4">
+                {analytics.signalBreakdown.map((s) => (
+                  <div key={s.label}>
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="min-w-0">
+                        <p className="font-semibold">{s.label}</p>
+                        <p className="text-xs text-muted-foreground">{s.hint}</p>
+                      </div>
+                      <span className="text-sm font-bold">{s.value}%</span>
+                    </div>
+                    <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-muted">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-signal-purple to-signal-cyan"
+                        style={{ width: `${s.value}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="card-glow p-6">
+              <h2 className="text-2xl font-bold mb-1">Forecast</h2>
+              <p className="text-sm text-muted-foreground mb-5">
+                Actual vs projected growth.
+              </p>
+              <TrendChart
+                data={analytics.forecastChart}
+                dataKeys={['actual', 'forecast']}
+                title="Forecast chart"
+                type="line"
+                colors={['#06b6d4', '#a855f7']}
+                height={260}
               />
             </div>
           </div>

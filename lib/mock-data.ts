@@ -171,6 +171,45 @@ export const trendingNow = [
   },
 ];
 
+export const albums = [
+  {
+    id: 'al-1',
+    title: 'Made in Lagos',
+    artistId: '1',
+    artist: 'Wizkid',
+    cover: '/Wizkid.jpeg',
+    genre: 'Afrobeats',
+    change: 18,
+  },
+  {
+    id: 'al-2',
+    title: 'Love, Damini',
+    artistId: '2',
+    artist: 'Burna Boy',
+    cover: '/burna.png',
+    genre: 'Afrobeats',
+    change: 12,
+  },
+  {
+    id: 'al-3',
+    title: 'Rave & Roses',
+    artistId: '7',
+    artist: 'Rema',
+    cover: '/rema.png',
+    genre: 'Afrobeats',
+    change: 21,
+  },
+  {
+    id: 'al-4',
+    title: 'Timeless',
+    artistId: '5',
+    artist: 'Davido',
+    cover: '/davido.png',
+    genre: 'Afrobeats',
+    change: 9,
+  },
+]
+
 export const favorites = [
   {
     id: "1",
@@ -261,3 +300,262 @@ export const chartDataComparison = [
     "Davido": 2100,
   },
 ];
+
+// Scout analytics mock data
+export const scoutTrendCharts = [
+  { month: 'Jan', mentionsGrowth: 22, sentimentMomentum: 45, tiktokUsage: 18, anomalySpikes: 2, forecastGrowth: 28 },
+  { month: 'Feb', mentionsGrowth: 18, sentimentMomentum: 52, tiktokUsage: 21, anomalySpikes: 1, forecastGrowth: 30 },
+  { month: 'Mar', mentionsGrowth: 26, sentimentMomentum: 58, tiktokUsage: 35, anomalySpikes: 4, forecastGrowth: 34 },
+  { month: 'Apr', mentionsGrowth: 34, sentimentMomentum: 61, tiktokUsage: 42, anomalySpikes: 6, forecastGrowth: 39 },
+  { month: 'May', mentionsGrowth: 29, sentimentMomentum: 57, tiktokUsage: 38, anomalySpikes: 3, forecastGrowth: 36 },
+  { month: 'Jun', mentionsGrowth: 41, sentimentMomentum: 66, tiktokUsage: 55, anomalySpikes: 8, forecastGrowth: 44 },
+  { month: 'Jul', mentionsGrowth: 48, sentimentMomentum: 70, tiktokUsage: 62, anomalySpikes: 5, forecastGrowth: 51 },
+  { month: 'Aug', mentionsGrowth: 44, sentimentMomentum: 68, tiktokUsage: 60, anomalySpikes: 4, forecastGrowth: 49 },
+  { month: 'Sep', mentionsGrowth: 52, sentimentMomentum: 73, tiktokUsage: 74, anomalySpikes: 9, forecastGrowth: 57 },
+  { month: 'Oct', mentionsGrowth: 57, sentimentMomentum: 76, tiktokUsage: 79, anomalySpikes: 6, forecastGrowth: 61 },
+  { month: 'Nov', mentionsGrowth: 61, sentimentMomentum: 79, tiktokUsage: 83, anomalySpikes: 7, forecastGrowth: 66 },
+  { month: 'Dec', mentionsGrowth: 68, sentimentMomentum: 82, tiktokUsage: 91, anomalySpikes: 10, forecastGrowth: 72 },
+]
+
+export const breakoutRadarRows = [
+  {
+    artistId: '6',
+    tiktokUsageGrowth: 72,
+    shazamSpikeLevel: 64,
+    mentionsVelocity: 78,
+    playlistGrowth: 59,
+    breakoutProbability: 93,
+  },
+  {
+    artistId: '7',
+    tiktokUsageGrowth: 55,
+    shazamSpikeLevel: 41,
+    mentionsVelocity: 63,
+    playlistGrowth: 52,
+    breakoutProbability: 88,
+  },
+  {
+    artistId: '3',
+    tiktokUsageGrowth: 49,
+    shazamSpikeLevel: 38,
+    mentionsVelocity: 57,
+    playlistGrowth: 46,
+    breakoutProbability: 82,
+  },
+  {
+    artistId: '8',
+    tiktokUsageGrowth: 43,
+    shazamSpikeLevel: 29,
+    mentionsVelocity: 51,
+    playlistGrowth: 44,
+    breakoutProbability: 79,
+  },
+  {
+    artistId: '1',
+    tiktokUsageGrowth: 33,
+    shazamSpikeLevel: 24,
+    mentionsVelocity: 46,
+    playlistGrowth: 31,
+    breakoutProbability: 74,
+  },
+  {
+    artistId: '2',
+    tiktokUsageGrowth: 31,
+    shazamSpikeLevel: 22,
+    mentionsVelocity: 44,
+    playlistGrowth: 29,
+    breakoutProbability: 72,
+  },
+]
+
+export const artistAnalyticsById: Record<
+  string,
+  {
+    trendScore: number
+    breakoutProbability: number
+    mentionsVelocity: number
+    sentimentMomentum: number
+    tiktokUsageGrowth: number
+    playlistGrowth: number
+    forecastGrowth: number
+    signalBreakdown: Array<{ label: string; value: number; hint: string }>
+    forecastChart: Array<{ month: string; actual: number; forecast: number }>
+  }
+> = {
+  '1': {
+    trendScore: 91,
+    breakoutProbability: 74,
+    mentionsVelocity: 46,
+    sentimentMomentum: 72,
+    tiktokUsageGrowth: 33,
+    playlistGrowth: 31,
+    forecastGrowth: 42,
+    signalBreakdown: [
+      { label: 'Mentions velocity', value: 46, hint: 'Daily mentions acceleration' },
+      { label: 'Sentiment momentum', value: 72, hint: 'Positive/negative swing rate' },
+      { label: 'TikTok audio usage', value: 33, hint: 'Audio reuse growth' },
+      { label: 'Playlist growth', value: 31, hint: 'Net playlist adds' },
+      { label: 'Shazam spike', value: 24, hint: 'Recognition lift' },
+    ],
+    forecastChart: [
+      { month: 'Sep', actual: 41, forecast: 43 },
+      { month: 'Oct', actual: 45, forecast: 47 },
+      { month: 'Nov', actual: 48, forecast: 52 },
+      { month: 'Dec', actual: 54, forecast: 58 },
+    ],
+  },
+  '2': {
+    trendScore: 89,
+    breakoutProbability: 72,
+    mentionsVelocity: 44,
+    sentimentMomentum: 69,
+    tiktokUsageGrowth: 31,
+    playlistGrowth: 29,
+    forecastGrowth: 40,
+    signalBreakdown: [
+      { label: 'Mentions velocity', value: 44, hint: 'Daily mentions acceleration' },
+      { label: 'Sentiment momentum', value: 69, hint: 'Positive/negative swing rate' },
+      { label: 'TikTok audio usage', value: 31, hint: 'Audio reuse growth' },
+      { label: 'Playlist growth', value: 29, hint: 'Net playlist adds' },
+      { label: 'Shazam spike', value: 22, hint: 'Recognition lift' },
+    ],
+    forecastChart: [
+      { month: 'Sep', actual: 38, forecast: 40 },
+      { month: 'Oct', actual: 41, forecast: 44 },
+      { month: 'Nov', actual: 45, forecast: 49 },
+      { month: 'Dec', actual: 50, forecast: 55 },
+    ],
+  },
+  '3': {
+    trendScore: 86,
+    breakoutProbability: 82,
+    mentionsVelocity: 57,
+    sentimentMomentum: 63,
+    tiktokUsageGrowth: 49,
+    playlistGrowth: 46,
+    forecastGrowth: 54,
+    signalBreakdown: [
+      { label: 'Mentions velocity', value: 57, hint: 'Daily mentions acceleration' },
+      { label: 'Sentiment momentum', value: 63, hint: 'Positive/negative swing rate' },
+      { label: 'TikTok audio usage', value: 49, hint: 'Audio reuse growth' },
+      { label: 'Playlist growth', value: 46, hint: 'Net playlist adds' },
+      { label: 'Shazam spike', value: 38, hint: 'Recognition lift' },
+    ],
+    forecastChart: [
+      { month: 'Sep', actual: 44, forecast: 47 },
+      { month: 'Oct', actual: 49, forecast: 53 },
+      { month: 'Nov', actual: 55, forecast: 60 },
+      { month: 'Dec', actual: 63, forecast: 69 },
+    ],
+  },
+  '4': {
+    trendScore: 88,
+    breakoutProbability: 77,
+    mentionsVelocity: 49,
+    sentimentMomentum: 75,
+    tiktokUsageGrowth: 36,
+    playlistGrowth: 34,
+    forecastGrowth: 46,
+    signalBreakdown: [
+      { label: 'Mentions velocity', value: 49, hint: 'Daily mentions acceleration' },
+      { label: 'Sentiment momentum', value: 75, hint: 'Positive/negative swing rate' },
+      { label: 'TikTok audio usage', value: 36, hint: 'Audio reuse growth' },
+      { label: 'Playlist growth', value: 34, hint: 'Net playlist adds' },
+      { label: 'Shazam spike', value: 28, hint: 'Recognition lift' },
+    ],
+    forecastChart: [
+      { month: 'Sep', actual: 40, forecast: 42 },
+      { month: 'Oct', actual: 44, forecast: 47 },
+      { month: 'Nov', actual: 48, forecast: 52 },
+      { month: 'Dec', actual: 55, forecast: 60 },
+    ],
+  },
+  '5': {
+    trendScore: 92,
+    breakoutProbability: 81,
+    mentionsVelocity: 54,
+    sentimentMomentum: 70,
+    tiktokUsageGrowth: 45,
+    playlistGrowth: 41,
+    forecastGrowth: 55,
+    signalBreakdown: [
+      { label: 'Mentions velocity', value: 54, hint: 'Daily mentions acceleration' },
+      { label: 'Sentiment momentum', value: 70, hint: 'Positive/negative swing rate' },
+      { label: 'TikTok audio usage', value: 45, hint: 'Audio reuse growth' },
+      { label: 'Playlist growth', value: 41, hint: 'Net playlist adds' },
+      { label: 'Shazam spike', value: 33, hint: 'Recognition lift' },
+    ],
+    forecastChart: [
+      { month: 'Sep', actual: 46, forecast: 49 },
+      { month: 'Oct', actual: 52, forecast: 56 },
+      { month: 'Nov', actual: 59, forecast: 64 },
+      { month: 'Dec', actual: 67, forecast: 73 },
+    ],
+  },
+  '6': {
+    trendScore: 94,
+    breakoutProbability: 93,
+    mentionsVelocity: 78,
+    sentimentMomentum: 74,
+    tiktokUsageGrowth: 72,
+    playlistGrowth: 59,
+    forecastGrowth: 68,
+    signalBreakdown: [
+      { label: 'Mentions velocity', value: 78, hint: 'Daily mentions acceleration' },
+      { label: 'Sentiment momentum', value: 74, hint: 'Positive/negative swing rate' },
+      { label: 'TikTok audio usage', value: 72, hint: 'Audio reuse growth' },
+      { label: 'Playlist growth', value: 59, hint: 'Net playlist adds' },
+      { label: 'Shazam spike', value: 64, hint: 'Recognition lift' },
+    ],
+    forecastChart: [
+      { month: 'Sep', actual: 52, forecast: 56 },
+      { month: 'Oct', actual: 59, forecast: 64 },
+      { month: 'Nov', actual: 67, forecast: 73 },
+      { month: 'Dec', actual: 76, forecast: 83 },
+    ],
+  },
+  '7': {
+    trendScore: 90,
+    breakoutProbability: 88,
+    mentionsVelocity: 63,
+    sentimentMomentum: 71,
+    tiktokUsageGrowth: 55,
+    playlistGrowth: 52,
+    forecastGrowth: 60,
+    signalBreakdown: [
+      { label: 'Mentions velocity', value: 63, hint: 'Daily mentions acceleration' },
+      { label: 'Sentiment momentum', value: 71, hint: 'Positive/negative swing rate' },
+      { label: 'TikTok audio usage', value: 55, hint: 'Audio reuse growth' },
+      { label: 'Playlist growth', value: 52, hint: 'Net playlist adds' },
+      { label: 'Shazam spike', value: 41, hint: 'Recognition lift' },
+    ],
+    forecastChart: [
+      { month: 'Sep', actual: 48, forecast: 51 },
+      { month: 'Oct', actual: 54, forecast: 58 },
+      { month: 'Nov', actual: 61, forecast: 66 },
+      { month: 'Dec', actual: 69, forecast: 75 },
+    ],
+  },
+  '8': {
+    trendScore: 85,
+    breakoutProbability: 79,
+    mentionsVelocity: 51,
+    sentimentMomentum: 62,
+    tiktokUsageGrowth: 43,
+    playlistGrowth: 44,
+    forecastGrowth: 50,
+    signalBreakdown: [
+      { label: 'Mentions velocity', value: 51, hint: 'Daily mentions acceleration' },
+      { label: 'Sentiment momentum', value: 62, hint: 'Positive/negative swing rate' },
+      { label: 'TikTok audio usage', value: 43, hint: 'Audio reuse growth' },
+      { label: 'Playlist growth', value: 44, hint: 'Net playlist adds' },
+      { label: 'Shazam spike', value: 29, hint: 'Recognition lift' },
+    ],
+    forecastChart: [
+      { month: 'Sep', actual: 43, forecast: 46 },
+      { month: 'Oct', actual: 48, forecast: 52 },
+      { month: 'Nov', actual: 54, forecast: 59 },
+      { month: 'Dec', actual: 62, forecast: 68 },
+    ],
+  },
+}
